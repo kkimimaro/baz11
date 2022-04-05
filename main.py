@@ -19,7 +19,16 @@ def start_message(message):
     keyboard.add(button2) # добавляем кнопки к клавиатуре
     bot.send_message(message.chat.id, text="Привет, как дела?", reply_markup=keyboard)
 
-
+    
+@bot.callback_query_handler(func=lambda call: True)
+def query_handler(call):
+    bot.answer_callback_query(callback_query_id=call.id) #text='Спасибо за честный ответ!'
+    if call.data == '1':
+      bot.send_message(call.message.chat.id, "Вы нажали на кнопку №1")
+    elif call.data == '2':
+      bot.send_message(call.message.chat.id, "Вы нажали на кнопку №2")
+    
+    
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
     json_string = request.get_data().decode('utf-8')
