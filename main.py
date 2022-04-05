@@ -2,16 +2,12 @@ import os
 
 from flask import Flask, request
 from telebot import types
-
+import random as r
 import telebot
 
-TOKEN = '5206622849:AAF1cPEbHNmlzMTeXs511DCUnqrtDm7ebnc'
+TOKEN = '5286040884:AAGJ5Qx-2uc4tu0mCJ9ewN4cWdRoWQptbTg'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
-
-import telebot
-from telebot import types
-import random as r
 
 @bot.message_handler(commands=['start', 'help'])
 def start_message(message):
@@ -115,7 +111,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://timonn.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url='https://bazzzz.herokuapp.com/' + TOKEN)
     return "!", 200
 
 if __name__ == "__main__":
